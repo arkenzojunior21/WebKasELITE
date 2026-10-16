@@ -1,0 +1,18 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "functions": {
+    "api/*.php": {
+      "runtime": "vercel-php@0.9.0"
+    }
+  },
+  "routes": [
+    { "src": "^/$", "dest": "/api/index.php" },
+    { "src": "^/index\\.php$", "dest": "/api/index.php" },
+    { "src": "^/anggota\\.php$", "dest": "/api/anggota.php" },
+    { "src": "^/minggu\\.php$", "dest": "/api/minggu.php" },
+    { "src": "^/laporan\\.php$", "dest": "/api/laporan.php" },
+    { "src": "^/toggle_bayar\\.php$", "dest": "/api/toggle_bayar.php" },
+    { "src": "^/kirim_wa\\.php$", "dest": "/api/kirim_wa.php" },
+    { "src": "^/style\\.css$", "dest": "/style.css" }
+  ]
+}
