@@ -1,5 +1,5 @@
 <?php
-require_once 'koneksi.php';
+require_once __DIR__ . '/koneksi.php';
 $active_page = 'dashboard';
 
 // ── Ambil data ──
@@ -70,7 +70,7 @@ $type = $_GET['type'] ?? 'success';
 </style>
 </head>
 <body>
-<?php require_once '_sidebar.php'; ?>
+<?php require_once __DIR__ . '/_sidebar.php'; ?>
 
 <main class="main">
     <!-- HEADER -->

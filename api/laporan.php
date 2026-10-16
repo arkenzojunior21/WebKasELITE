@@ -1,5 +1,5 @@
 <?php
-require_once 'koneksi.php';
+require_once __DIR__ . '/koneksi.php';
 $active_page = 'laporan';
 
 $anggota_list = $conn->query("
@@ -13,7 +13,7 @@ $anggota_list = $conn->query("
     FROM anggota a
     LEFT JOIN pembayaran p  ON a.id=p.anggota_id
     LEFT JOIN minggu_kas mk ON p.minggu_id=mk.id
-    GROUP BY a.id ORDER BY a.kelas, a.jurusan, a.nama
+    GROUP BY a.id, a.nama, a.kelas, a.jurusan, a.no_hp, a.created_at ORDER BY a.kelas, a.jurusan, a.nama
 ")->fetch_all(MYSQLI_ASSOC);
 
 $total_sabtu     = (int)$conn->query("SELECT COUNT(*) FROM minggu_kas")->fetch_row()[0];
@@ -42,7 +42,7 @@ $pct_total = $grand_kewajiban > 0 ? round(($grand_terkumpul/$grand_kewajiban)*10
 </style>
 </head>
 <body>
-<?php require_once '_sidebar.php'; ?>
+<?php require_once __DIR__ . '/_sidebar.php'; ?>
 <main class="main">
     <div class="page-header">
         <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:10px">

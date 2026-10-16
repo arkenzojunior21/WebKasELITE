@@ -1,5 +1,5 @@
 <?php
-require_once 'koneksi.php';
+require_once __DIR__ . '/koneksi.php';
 $active_page = 'minggu';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -54,7 +54,7 @@ $msg = $_GET['msg'] ?? '';
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<?php require_once '_sidebar.php'; ?>
+<?php require_once __DIR__ . '/_sidebar.php'; ?>
 <main class="main">
     <div class="page-header">
         <h1>📅 Jadwal Sabtu</h1>

@@ -1,5 +1,5 @@
 <?php
-require_once 'koneksi.php';
+require_once __DIR__ . '/koneksi.php';
 $active_page = 'anggota';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -37,7 +37,7 @@ $anggota_list = $conn->query("
     FROM anggota a
     LEFT JOIN pembayaran p  ON a.id = p.anggota_id
     LEFT JOIN minggu_kas mk ON p.minggu_id = mk.id
-    GROUP BY a.id ORDER BY a.kelas, a.jurusan, a.nama
+    GROUP BY a.id, a.nama, a.kelas, a.jurusan, a.no_hp, a.created_at ORDER BY a.kelas, a.jurusan, a.nama
 ")->fetch_all(MYSQLI_ASSOC);
 
 $msg = $_GET['msg'] ?? '';
@@ -51,7 +51,7 @@ $msg = $_GET['msg'] ?? '';
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<?php require_once '_sidebar.php'; ?>
+<?php require_once __DIR__ . '/_sidebar.php'; ?>
 <main class="main">
     <div class="page-header">
         <h1>👥 Data Anggota</h1>
